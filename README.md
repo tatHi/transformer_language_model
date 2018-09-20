@@ -1,58 +1,55 @@
 # Transformer LM
-
-TransformerのEncoderを使った言語モデル．  
-Transformer自体の実装は以下．  
+[UNFINISHED]
+Language model with transformer encoder.
+The source of transformer is forked from:  
 https://github.com/jadore801120/attention-is-all-you-need-pytorch
 
-/data/ : ptbのデータ  
-/src/ : ソースコード
+/data/ : ptb data 
+/src/ : source codes
 
-## 中身
-### trainer.py
-学習，評価の管理
+## Requirement
+- python 3.4+
+- pytorch 0.4+
+see https://pytorch.org/get-started/locally/
 
-### lm.py
-ロスと尤度を計算する言語モデル  
-Models.pyに含まれるEncoderクラスを使っている．
-Encoderの出力に単語ベクトルを内積とってsoftmax.  
-
-### Models.py
-上記リポジトリからの借用．  
-
-単語埋め込み，Attentionをはる
-
-i番目の単語を予測するときにi+1番目以降を見ないようにマスキングする部分を付け加えている．
-マスキング部分はDecoderクラスから借用．  
-
-#### パラメータ
-n_src_vocab　語彙数
-len_max_seq　最大文長
-d_word_vec　単語ベクトルサイズ
-n_layers　レイヤ数
-n_heads　head数
-d_k　
-d_v　
-d_model　出力サイズ=単語ベクトルサイズ
-d_inner
-
-
-#### 入力
-
-idLines:padding済みの単語ID列  
-0をpadding_idxとすると，  
+- tqdm
 ```
-[[8,9,2,4,6]  
- [9,2,0,0,0]
- [4,7,3,0,0]
+$ pip install tqdm
 ```
 
-inputLens:文の長さ
+- numpy
 ```
-[[1,2,3,4,5]  
- [1,2,0,0,0]
- [1,2,3,0,0]
+$ pip install numpy
 ```
 
-#### 出力
-各単語位置に対応するd_modelサイズのベクトル
+## Quick Start
+Model file is not exported (only evaluation is reported in result folder).
+```
+$ mkdir result
+$ cd src
+$ python trainer.py
+```
 
+GPU is automatically used when GPU is available.  
+To specify GPU ID (as 2):  
+```
+$ CUDA_VISIBLE_DEVICES=2 python trainer.py
+```
+
+Parameters can be given via argparse.
+```
+$ python trainer.py -d_k 64\
+                    -d_v 64\
+                    -d_inner 1024\
+                    -d_model 512\
+                    -n_layers 6\
+                    -n_heads 8\
+                    -n_warmup_steps 4000\
+                    -max_epoch 1000
+```
+
+## Model Description
+### Encoder
+Composed of Encoder Layers.  
+
+hogehoge...
