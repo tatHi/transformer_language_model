@@ -45,6 +45,7 @@ $ python trainer.py -d_k 64\
                     -n_layers 6\
                     -n_heads 8\
                     -n_warmup_steps 4000\
+                    -out_dropout 0.5\
                     -max_epoch 1000
 ```
 

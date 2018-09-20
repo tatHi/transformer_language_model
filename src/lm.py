@@ -68,7 +68,7 @@ class LM(nn.Module):
                                  d_model=config.d_model,
                                  d_inner=config.d_inner,
                                  dropout=0.1)
-        self.outputDropout = nn.Dropout(0.5)
+        self.outputDropout = nn.Dropout(config.out_dropout)
         self.outputLinear = nn.Linear(config.d_model, vocSize, bias=False)
         nn.init.xavier_normal_(self.outputLinear.weight)
 

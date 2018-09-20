@@ -11,6 +11,7 @@ parser.add_argument('-n_layers',type=int,default=6)
 parser.add_argument('-n_heads',type=int,default=8)
 parser.add_argument('-n_warmup_steps',type=int,default=4000)
 parser.add_argument('-max_epoch',type=int,default=1000)
+parser.add_argument('-out_dropout',type=float,default=0.5)
 
 args = parser.parse_args()
 
@@ -23,6 +24,7 @@ d_word_vec = args.d_model
 n_layers = args.n_layers
 n_warmup_steps = args.n_warmup_steps
 maxEpoch = args.max_epoch
+out_dropout = args.out_dropout
 
 trainPath = '../data/ptb.train.txt'
 validPath = '../data/ptb.valid.txt'
