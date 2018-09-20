@@ -94,6 +94,7 @@ class Trainer:
             self.model.use_cuda = True
             self.model.tensor = torch.cuda.LongTensor
 
+        reports = []
         result = []
 
         for ds in [self.ds_train, self.ds_valid, self.ds_test]: 
@@ -130,15 +131,18 @@ class Trainer:
             loss_per_word = accLoss/n_word_total
             accuracy = n_word_correct/n_word_total
 
-            print('  - ppl: {ppl: 8.5f}, accuracy: {accu:3.3f} %, '\
-                    'elapse: {elapse:3.3f} min'.format(
-                    ppl=math.exp(min(loss_per_word, 100)), accu=100*accuracy,
-                    elapse=(time.time()-start)/60))
-            
-            result.append(math.exp(min(loss_per_word, 100)))
+            report = '- ppl: {ppl: 8.5f}, accuracy: {accu:3.3f} %, '\
+                     'elapse: {elapse:3.3f} min'.format(
+                     ppl=math.exp(min(loss_per_word, 100)), accu=100*accuracy,
+                     elapse=(time.time()-start)/60)
+            reports.append(report)
 
-        print(result)
+            result.append(math.exp(min(loss_per_word, 100)))
         
+        # show reports
+        for t,r in zip(['train','valid','test'],reports):
+            print('(%s)'%t+r)
+
         result = [str(r) for r in result]
         self.eval_log.write('\t'.join(result))
 

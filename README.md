@@ -1,11 +1,11 @@
 # Transformer LM
-[UNFINISHED]
-Language model with transformer encoder.
-The source of transformer is forked from:  
-https://github.com/jadore801120/attention-is-all-you-need-pytorch
+[UNFINISHED]  
+Language model with transformer encoder.  
+The source of transformer is forked from:   
+https://github.com/jadore801120/attention-is-all-you-need-pytorch  
 
-/data/ : ptb data 
-/src/ : source codes
+/data/ : ptb data   
+/src/ : source codes  
 
 ## Requirement
 - python 3.4+
