@@ -1,3 +1,11 @@
+import argparse
+'''
+args = argparse.ArgumentParser()
+
+args.add_argument('--dk',type=int,default=64)
+args.add_argument('--dk',type=int,default=64)
+args.add_argument('--dk',type=int,default=64)
+'''
 
 d_k = 64
 d_v = 64
