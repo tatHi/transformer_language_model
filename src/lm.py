@@ -67,7 +67,7 @@ class LM(nn.Module):
                                  d_v=config.d_v,
                                  d_model=config.d_model,
                                  d_inner=config.d_inner,
-                                 dropout=0.1)
+                                 dropout=config.enc_dropout)
         self.outputDropout = nn.Dropout(config.out_dropout)
         self.outputLinear = nn.Linear(config.d_model, vocSize, bias=False)
         nn.init.xavier_normal_(self.outputLinear.weight)
@@ -75,9 +75,6 @@ class LM(nn.Module):
         self.padId = padId
         self.use_cuda = False
         self.tensor = torch.cuda.LongTensor if self.use_cuda else torch.LongTensor
-
-        #self.criterion = nn.CrossEntropyLoss(ignore_index=0,reduction='sum')
-        self.criterion = nn.CrossEntropyLoss(ignore_index=0)
 
     def forward(self, idLines, inputLens, return_attn=False):
         # masking

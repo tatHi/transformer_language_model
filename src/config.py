@@ -12,6 +12,7 @@ parser.add_argument('-n_heads',type=int,default=8)
 parser.add_argument('-n_warmup_steps',type=int,default=4000)
 parser.add_argument('-max_epoch',type=int,default=1000)
 parser.add_argument('-out_dropout',type=float,default=0.5)
+parser.add_argument('-enc_dropout',type=float,default=0.1)
 
 args = parser.parse_args()
 

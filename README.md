@@ -46,6 +46,7 @@ $ python trainer.py -d_k 64\
                     -n_heads 8\
                     -n_warmup_steps 4000\
                     -out_dropout 0.5\
+                    -enc_dropout 0.1\
                     -max_epoch 1000
 ```
 
