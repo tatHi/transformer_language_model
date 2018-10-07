@@ -26,6 +26,7 @@ n_layers = args.n_layers
 n_warmup_steps = args.n_warmup_steps
 maxEpoch = args.max_epoch
 out_dropout = args.out_dropout
+enc_dropout = args.enc_dropout
 
 trainPath = '../data/ptb.train.txt'
 validPath = '../data/ptb.valid.txt'
